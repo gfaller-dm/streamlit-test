@@ -9,3 +9,5 @@ env:
     valueFrom: "sql-warehouse"
   - name: STREAMLIT_BROWSER_GATHER_USAGE_STATS
     value: "false"
+  - name: "APP_USER_AUTH"
+    value: "Y"

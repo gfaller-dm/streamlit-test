@@ -1,0 +1,35 @@
+{
+  "version": "v1",
+  "host": "https://dbc-9a5050a2-0ec8.cloud.databricks.com",
+  "remote_path": "/Workspace/Users/gerhard@gerhardfaller.de/databricks_apps/streamlit-test_2026_09_03-14_31/streamlit-data-app-obo-user",
+  "last_modified_times": {
+    ".gitignore": "2026-09-07T11:58:08.175406+02:00",
+    ".streamlit/config.toml": "2026-09-07T14:02:09.3722071+02:00",
+    "app.py": "2026-09-07T14:02:27.5219466+02:00",
+    "app.yaml": "2026-09-07T13:44:26.1568113+02:00",
+    "manifest.yaml": "2026-09-07T11:59:08.8930572+02:00",
+    "notes.md": "2026-09-07T12:15:11.2383396+02:00",
+    "requirements.txt": "2026-09-07T12:36:23.2806174+02:00",
+    "utils/utils.py": "2026-09-07T12:11:33.0608965+02:00"
+  },
+  "local_to_remote_names": {
+    ".gitignore": ".gitignore",
+    ".streamlit/config.toml": ".streamlit/config.toml",
+    "app.py": "app.py",
+    "app.yaml": "app.yaml",
+    "manifest.yaml": "manifest.yaml",
+    "notes.md": "notes.md",
+    "requirements.txt": "requirements.txt",
+    "utils/utils.py": "utils/utils.py"
+  },
+  "remote_to_local_names": {
+    ".gitignore": ".gitignore",
+    ".streamlit/config.toml": ".streamlit/config.toml",
+    "app.py": "app.py",
+    "app.yaml": "app.yaml",
+    "manifest.yaml": "manifest.yaml",
+    "notes.md": "notes.md",
+    "requirements.txt": "requirements.txt",
+    "utils/utils.py": "utils/utils.py"
+  }
+}
