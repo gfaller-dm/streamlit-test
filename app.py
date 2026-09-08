@@ -52,11 +52,11 @@ sport_options = sorted(sport_source["Sport"].dropna().unique().tolist())
 selected_sports = [value for value in selected_sports if value in sport_options]
 st.session_state["selected_sports"] = selected_sports
 filter_columns = st.columns(2)
-selected_federations = filter_columns[0].multiselect(
-    "Federation", options=federation_options, key="selected_federations"
-)
-selected_sports = filter_columns[1].multiselect(
+selected_sports = filter_columns[0].multiselect(
     "Sport", options=sport_options, key="selected_sports"
+)
+selected_federations = filter_columns[1].multiselect(
+    "Federation", options=federation_options, key="selected_federations"
 )
 
 filtered_data = data
@@ -65,7 +65,31 @@ if selected_federations:
 if selected_sports:
     filtered_data = filtered_data[filtered_data["Sport"].isin(selected_sports)]
 
-st.subheader("Safeguarding policies")
+st.markdown(
+    """
+    <style>
+    [data-testid="stMetric"] {
+        text-align: center;
+    }
+    [data-testid="stMetricLabel"] {
+        justify-content: center;
+        font-size: 1.1rem;
+    }
+    [data-testid="stMetricValue"] {
+        justify-content: center;
+        font-size: 2.6rem;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+kpi_columns = st.columns(3)
+kpi_columns[0].metric("Records", len(filtered_data))
+kpi_columns[1].metric("Federations", filtered_data["Federation"].nunique())
+kpi_columns[2].metric("Countries", filtered_data["Country"].nunique())
+
+
 chart_columns = ["CodeofEthics", "CodeofConduct", "SpecialEntityDedicated"]
 chart_titles = {
     "CodeofEthics": "Code of Ethics",
@@ -85,6 +109,7 @@ for chart_column, column_layout in zip(chart_columns, chart_columns_layout):
         go.Pie(
             labels=counts.index,
             values=counts.values,
+            customdata=counts.index,
             hole=0.55,
             sort=False,
             texttemplate="%{label}<br>%{percent:.0%}",
@@ -94,6 +119,7 @@ for chart_column, column_layout in zip(chart_columns, chart_columns_layout):
     figure.update_layout(
         title=chart_titles[chart_column],
         showlegend=True,
+        clickmode="event+select",
         margin={"t": 55, "b": 10, "l": 10, "r": 10},
         height=320,
     )
@@ -104,11 +130,18 @@ for chart_column, column_layout in zip(chart_columns, chart_columns_layout):
         on_select="rerun",
         selection_mode=("points",),
     )
-    donut_selections[chart_column] = {
-        point["label"]
-        for point in chart_event.get("selection", {}).get("points", [])
-        if "label" in point
-    }
+    selected_points = chart_event.get("selection", {}).get("points", [])
+    selected_values = set()
+    for point in selected_points:
+        if point.get("customdata") is not None:
+            selected_values.add(point["customdata"])
+        elif point.get("label") is not None:
+            selected_values.add(point["label"])
+        else:
+            point_index = point.get("point_number", point.get("point_index"))
+            if point_index is not None:
+                selected_values.add(counts.index[point_index])
+    donut_selections[chart_column] = selected_values
 
 st.subheader("Federations by country")
 map_data = filtered_data.copy()
@@ -126,6 +159,7 @@ country_counts = (
     .rename_axis("Country")
     .reset_index(name="Federations")
 )
+
 map_figure = px.choropleth(
     country_counts,
     locations="Country",
@@ -138,8 +172,8 @@ map_figure = px.choropleth(
 map_figure.update_layout(
     margin={"t": 10, "b": 0, "l": 0, "r": 0},
     height=520,
+    showlegend=False,
+    coloraxis_showscale=False,
 )
 st.plotly_chart(map_figure, use_container_width=True)
-
-
 
