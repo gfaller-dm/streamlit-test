@@ -1,32 +1,13 @@
-import os
+from pathlib import Path
+
 import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
 
 from utils.utils import *
 
-# Load and check environment variable is set correctly
-assert os.getenv('DATABRICKS_WAREHOUSE_ID'), "DATABRICKS_WAREHOUSE_ID must be set in app.yaml."
-APP_USER_AUTH = os.getenv('APP_USER_AUTH')
-assert APP_USER_AUTH, "APP_USER_AUTH must be set in app.yaml."
-
-# Query
-sql_query = "select * from workspace.default.sports_federations_safeguarding_country limit 1000"
-
-# Query the SQL data
-if APP_USER_AUTH == "Y":
-
-    print('User authentication is enabled. Querying with user access token.')
-
-    # Extract user access token from the request headers
-    user_token = st.context.headers.get('X-Forwarded-Access-Token')
-    # Query the SQL data using the user token
-    data = sql_query_with_user_token(sql_query, user_token=user_token)
-
-else:
-    print('User authentication is disabled. Querying with service principal credentials.')
-    # In order to query with Service Principal credentials, comment the above line and uncomment the below line
-    data = sql_query_with_service_principal(sql_query)
+# Load the dashboard data from the local CSV file.
+data = read_csv_data(str(Path(__file__).with_name("test_data.csv")))
 
 # Streamlit app
 st.set_page_config(layout="wide")
