@@ -94,8 +94,6 @@ for chart_column, column_layout in zip(chart_columns, chart_columns_layout):
             hole=0.55,
             sort=False,
             texttemplate="%{label}<br>%{percent:.0%}",
-            hovertemplate="%{label}<br>%{value}<br>%{percent:.0%}<extra></extra>",
-            selected={"marker": {"opacity": 1.0}},
             marker={"colors": ["#2E8B57", "#D95F59", "#9E9E9E"]},
         )
     )
@@ -106,20 +104,25 @@ for chart_column, column_layout in zip(chart_columns, chart_columns_layout):
         margin={"t": 55, "b": 10, "l": 10, "r": 10},
         height=320,
     )
-
     chart_event = column_layout.plotly_chart(
         figure,
         use_container_width=True,
         key=f"donut_{chart_column}",
         on_select="rerun",
         selection_mode=("points",),
-        config={"staticPlot": False, "displayModeBar": False},
     )
-
-    donut_selections[chart_column] = selected_values_from_plotly_event(
-        chart_event,
-        counts.index,
-    )
+    selected_points = chart_event.get("selection", {}).get("points", [])
+    selected_values = set()
+    for point in selected_points:
+        if point.get("customdata") is not None:
+            selected_values.add(point["customdata"])
+        elif point.get("label") is not None:
+            selected_values.add(point["label"])
+        else:
+            point_index = point.get("point_number", point.get("point_index"))
+            if point_index is not None:
+                selected_values.add(counts.index[point_index])
+    donut_selections[chart_column] = selected_values
 
 st.subheader("Federations by country")
 map_data = filtered_data.copy()
