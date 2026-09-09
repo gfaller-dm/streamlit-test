@@ -1,0 +1,101 @@
+Federation,Sport,Country,CodeofEthics,CodeofConduct,SpecialEntityDedicated
+DFB-Football,Football,Germany,Y,Y,Y
+DFB-Basketball,Basketball,Germany,Y,Y,N
+DFB-Athletics,Athletics,Germany,Y,N,Y
+DFB-Swimming,Swimming,Germany,Y,Y,Y
+DFB-Volleyball,Volleyball,Germany,N,Y,N
+FFF-Football,Football,France,Y,Y,Y
+FFF-Basketball,Basketball,France,Y,N,N
+FFF-Athletics,Athletics,France,Y,Y,Y
+FFF-Swimming,Swimming,France,Y,Y,N
+FFF-Volleyball,Volleyball,France,N,Y,Y
+RFEF-Football,Football,Spain,Y,Y,N
+RFEF-Basketball,Basketball,Spain,Y,Y,Y
+RFEF-Athletics,Athletics,Spain,N,Y,N
+RFEF-Swimming,Swimming,Spain,Y,N,Y
+RFEF-Volleyball,Volleyball,Spain,Y,Y,Y
+FIGC-Football,Football,Italy,Y,N,Y
+FIGC-Basketball,Basketball,Italy,Y,Y,N
+FIGC-Athletics,Athletics,Italy,Y,Y,Y
+FIGC-Swimming,Swimming,Italy,N,Y,N
+FIGC-Volleyball,Volleyball,Italy,Y,Y,Y
+KNVB-Football,Football,Netherlands,Y,Y,Y
+KNVB-Basketball,Basketball,Netherlands,Y,Y,N
+KNVB-Athletics,Athletics,Netherlands,Y,N,Y
+KNVB-Swimming,Swimming,Netherlands,Y,Y,Y
+KNVB-Volleyball,Volleyball,Netherlands,N,Y,N
+RBFA-Football,Football,Belgium,Y,Y,N
+RBFA-Basketball,Basketball,Belgium,Y,N,Y
+RBFA-Athletics,Athletics,Belgium,Y,Y,Y
+RBFA-Swimming,Swimming,Belgium,N,Y,N
+RBFA-Volleyball,Volleyball,Belgium,Y,Y,Y
+FPF-Football,Football,Portugal,Y,Y,Y
+FPF-Basketball,Basketball,Portugal,Y,Y,N
+FPF-Athletics,Athletics,Portugal,N,Y,Y
+FPF-Swimming,Swimming,Portugal,Y,N,N
+FPF-Volleyball,Volleyball,Portugal,Y,Y,Y
+OFB-Football,Football,Austria,Y,N,Y
+OFB-Basketball,Basketball,Austria,Y,Y,N
+OFB-Athletics,Athletics,Austria,Y,Y,Y
+OFB-Swimming,Swimming,Austria,N,Y,N
+OFB-Volleyball,Volleyball,Austria,Y,Y,Y
+SFV-Football,Football,Switzerland,Y,Y,N
+SFV-Basketball,Basketball,Switzerland,Y,Y,Y
+SFV-Athletics,Athletics,Switzerland,Y,N,N
+SFV-Swimming,Swimming,Switzerland,Y,Y,Y
+SFV-Volleyball,Volleyball,Switzerland,N,Y,N
+SvFF-Football,Football,Sweden,Y,Y,Y
+SvFF-Basketball,Basketball,Sweden,Y,N,N
+SvFF-Athletics,Athletics,Sweden,Y,Y,Y
+SvFF-Swimming,Swimming,Sweden,N,Y,Y
+SvFF-Volleyball,Volleyball,Sweden,Y,Y,N
+NFF-Football,Football,Norway,Y,Y,N
+NFF-Basketball,Basketball,Norway,Y,Y,Y
+NFF-Athletics,Athletics,Norway,N,Y,N
+NFF-Swimming,Swimming,Norway,Y,N,Y
+NFF-Volleyball,Volleyball,Norway,Y,Y,Y
+DBU-Football,Football,Denmark,Y,N,Y
+DBU-Basketball,Basketball,Denmark,Y,Y,N
+DBU-Athletics,Athletics,Denmark,Y,Y,Y
+DBU-Swimming,Swimming,Denmark,N,Y,N
+DBU-Volleyball,Volleyball,Denmark,Y,Y,Y
+SUL-Football,Football,Finland,Y,Y,Y
+SUL-Basketball,Basketball,Finland,Y,Y,N
+SUL-Athletics,Athletics,Finland,Y,N,Y
+SUL-Swimming,Swimming,Finland,Y,Y,Y
+SUL-Volleyball,Volleyball,Finland,N,Y,N
+FAI-Football,Football,Ireland,Y,Y,N
+FAI-Basketball,Basketball,Ireland,Y,N,Y
+FAI-Athletics,Athletics,Ireland,Y,Y,Y
+FAI-Swimming,Swimming,Ireland,N,Y,N
+FAI-Volleyball,Volleyball,Ireland,Y,Y,Y
+PZPN-Football,Football,Poland,Y,Y,Y
+PZPN-Basketball,Basketball,Poland,Y,Y,N
+PZPN-Athletics,Athletics,Poland,N,Y,Y
+PZPN-Swimming,Swimming,Poland,Y,N,N
+PZPN-Volleyball,Volleyball,Poland,Y,Y,Y
+FACR-Football,Football,Czech Republic,Y,N,Y
+FACR-Basketball,Basketball,Czech Republic,Y,Y,N
+FACR-Athletics,Athletics,Czech Republic,Y,Y,Y
+FACR-Swimming,Swimming,Czech Republic,N,Y,N
+FACR-Volleyball,Volleyball,Czech Republic,Y,Y,Y
+HFF-Football,Football,Greece,Y,Y,N
+HFF-Basketball,Basketball,Greece,Y,Y,Y
+HFF-Athletics,Athletics,Greece,Y,N,N
+HFF-Swimming,Swimming,Greece,Y,Y,Y
+HFF-Volleyball,Volleyball,Greece,N,Y,N
+CBF-Football,Football,Brazil,Y,Y,Y
+CBF-Basketball,Basketball,Brazil,Y,N,N
+CBF-Athletics,Athletics,Brazil,Y,Y,Y
+CBF-Swimming,Swimming,Brazil,N,Y,N
+CBF-Volleyball,Volleyball,Brazil,Y,Y,Y
+Canada Soccer-Football,Football,Canada,Y,Y,N
+Canada Soccer-Basketball,Basketball,Canada,Y,Y,Y
+Canada Soccer-Athletics,Athletics,Canada,N,Y,N
+Canada Soccer-Swimming,Swimming,Canada,Y,N,Y
+Canada Soccer-Volleyball,Volleyball,Canada,Y,Y,Y
+JFA-Football,Football,Japan,Y,N,Y
+JFA-Basketball,Basketball,Japan,Y,Y,N
+JFA-Athletics,Athletics,Japan,Y,Y,Y
+JFA-Swimming,Swimming,Japan,N,Y,N
+JFA-Volleyball,Volleyball,Japan,Y,Y,Y

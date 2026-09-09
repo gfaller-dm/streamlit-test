@@ -1,32 +1,13 @@
-import os
+from pathlib import Path
+
 import streamlit as st
 import plotly.graph_objects as go
 import plotly.express as px
 
 from utils.utils import *
 
-# Load and check environment variable is set correctly
-assert os.getenv('DATABRICKS_WAREHOUSE_ID'), "DATABRICKS_WAREHOUSE_ID must be set in app.yaml."
-APP_USER_AUTH = os.getenv('APP_USER_AUTH')
-assert APP_USER_AUTH, "APP_USER_AUTH must be set in app.yaml."
-
-# Query
-sql_query = "select * from workspace.default.sports_federations_safeguarding_country limit 1000"
-
-# Query the SQL data
-if APP_USER_AUTH == "Y":
-
-    print('User authentication is enabled. Querying with user access token.')
-
-    # Extract user access token from the request headers
-    user_token = st.context.headers.get('X-Forwarded-Access-Token')
-    # Query the SQL data using the user token
-    data = sql_query_with_user_token(sql_query, user_token=user_token)
-
-else:
-    print('User authentication is disabled. Querying with service principal credentials.')
-    # In order to query with Service Principal credentials, comment the above line and uncomment the below line
-    data = sql_query_with_service_principal(sql_query)
+# Load the dashboard data from the local CSV file.
+data = read_csv_data(str(Path(__file__).with_name("test_data.csv")))
 
 # Streamlit app
 st.set_page_config(layout="wide")
@@ -113,6 +94,8 @@ for chart_column, column_layout in zip(chart_columns, chart_columns_layout):
             hole=0.55,
             sort=False,
             texttemplate="%{label}<br>%{percent:.0%}",
+            hovertemplate="%{label}<br>%{value}<br>%{percent:.0%}<extra></extra>",
+            selected={"marker": {"opacity": 1.0}},
             marker={"colors": ["#2E8B57", "#D95F59", "#9E9E9E"]},
         )
     )
@@ -123,25 +106,20 @@ for chart_column, column_layout in zip(chart_columns, chart_columns_layout):
         margin={"t": 55, "b": 10, "l": 10, "r": 10},
         height=320,
     )
+
     chart_event = column_layout.plotly_chart(
         figure,
         use_container_width=True,
         key=f"donut_{chart_column}",
         on_select="rerun",
         selection_mode=("points",),
+        config={"staticPlot": False, "displayModeBar": False},
     )
-    selected_points = chart_event.get("selection", {}).get("points", [])
-    selected_values = set()
-    for point in selected_points:
-        if point.get("customdata") is not None:
-            selected_values.add(point["customdata"])
-        elif point.get("label") is not None:
-            selected_values.add(point["label"])
-        else:
-            point_index = point.get("point_number", point.get("point_index"))
-            if point_index is not None:
-                selected_values.add(counts.index[point_index])
-    donut_selections[chart_column] = selected_values
+
+    donut_selections[chart_column] = selected_values_from_plotly_event(
+        chart_event,
+        counts.index,
+    )
 
 st.subheader("Federations by country")
 map_data = filtered_data.copy()
